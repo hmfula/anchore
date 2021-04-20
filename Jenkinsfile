@@ -31,7 +31,7 @@ stage('Building image') {
   
 stage('Parallel') {
       Analyze: {
-        writeFile file: anchorefile, text: 'docker.io/"hmfula/anchore:' + $BUILD_NUMBER + " " + dockerfile
+        writeFile file: anchorefile, text: 'docker.io/hmfula/anchore:' + $BUILD_NUMBER + " " + dockerfile
         anchore annotations: [[key: 'from', value: 'Jenkins']], autoSubscribeTagUpdates: false, bailOnFail: false, engineRetries: '10000', name: 'anchore_images'
       }
   }
